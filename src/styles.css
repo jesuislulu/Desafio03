@@ -1,0 +1,62 @@
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: #000000;
+}
+
+section {
+    padding-top: 2%;
+    padding-right: 10%;
+    width: 100%;
+    float: center;
+   }
+
+aside {
+    margin-top: 3%;
+    margin-right: 5%;
+    width: 120%;
+    float: left;
+    background-color: #e0e0e0;
+    border-left: 1px solid white;
+    font-size: 14px;
+}
+
+header {
+    padding: 25px;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    background-color: white;
+    padding-top: 25px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+
+.contenedor {
+    display: flex;
+}
+
+.text-white {
+    color: white;
+}
+
+nav {
+    font-size: 17px;
+}
+
+.activebutton {
+    color: rgb(3, 187, 254);
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: initial;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

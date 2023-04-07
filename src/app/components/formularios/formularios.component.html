@@ -1,0 +1,71 @@
+<form [formGroup]="formulario">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" formControlName="nombre">
+    <div *ngIf="formulario.get('nombre').invalid && formulario.get('nombre').touched">
+      <small class="text-danger" *ngIf="formulario.get('nombre').errors.required">El nombre es obligatorio</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="apellido" class="form-label">Apellido</label>
+    <input type="text" class="form-control" id="apellido" formControlName="apellido">
+    <div *ngIf="formulario.get('apellido').invalid && formulario.get('apellido').touched">
+      <small class="text-danger" *ngIf="formulario.get('apellido').errors.required">El apellido es obligatorio</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+    <div *ngIf="formulario.get('email').invalid && formulario.get('email').touched">
+      <small class="text-danger" *ngIf="formulario.get('email').errors.required">El email es obligatorio</small>
+      <small class="text-danger" *ngIf="formulario.get('email').hasError('email')">El email no es válido</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="contraseña" class="form-label">Contraseña</label>
+    <input type="password" class="form-control" id="contraseña" formControlName="contraseña">
+    <div *ngIf="formulario.get('contraseña').invalid && formulario.get('contraseña').touched">
+      <small class="text-danger" *ngIf="formulario.get('contraseña').errors.required">La contraseña es obligatoria</small>
+      <small class="text-danger" *ngIf="formulario.get('contraseña').hasError('minlength')">La contraseña debe tener al menos 6 caracteres</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="repetirContraseña" class="form-label">Repetir contraseña</label>
+    <input type="password" class="form-control" id="repetirContraseña" formControlName="repetirContraseña">
+    <div *ngIf="formulario.get('repetirContraseña').invalid && formulario.get('repetirContraseña').touched">
+      <small class="text-danger" *ngIf="formulario.get('repetirContraseña').errors.required">Debes repetir la contraseña</small>
+      <small class="text-danger" *ngIf="formulario.get('repetirContraseña').hasError('mismatch')">Las contraseñas no coinciden</small>
+    </div>
+  </div>
+  
+    
+<form>
+  <label>Nombre</label>
+  <input type="text" name="nombre" required>
+  <div class="error-message" *ngIf="form.controls['nombre'].errors?.required">Campo obligatorio</div>
+      
+  <label>Apellido</label>
+  <input type="text" name="apellido" required>
+  <div class="error-message" *ngIf="form.controls['apellido'].errors?.required">Campo obligatorio</div>
+      
+  <label>Email</label>
+  <input type="email" name="email" required>
+  <div class="error-message" *ngIf="form.controls['email'].errors?.required">Campo obligatorio</div>
+  <div class="error-message" *ngIf="form.controls['email'].errors?.email">Email inválido</div>
+      
+  <label>Contraseña</label>
+  <input type="password" name="password" required>
+  <div class="error-message" *ngIf="form.controls['password'].errors?.required">Campo obligatorio</div>
+      
+  <label>Repetir contraseña</label>
+  <input type="password" name="confirmPassword" required>
+  <div class="error-message" *ngIf="form.controls['confirmPassword'].errors?.required">Campo obligatorio</div>
+  <div class="error-message" *ngIf="form.controls['confirmPassword'].errors?.mustMatch">Las contraseñas no coinciden</div>
+      
+  <button type="submit" [disabled]="!form.valid">Crear usuario</button>
+</form>
+      
