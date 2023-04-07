@@ -1,19 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AsideComponent } from './components/aside/aside.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CarruselComponent } from './components/carrusel/carrusel.component';
+import { ListaComponent } from './components/lista/lista.component';
+import { FormulariosComponent } from './components/formularios/formularios.component';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsComponent } from './formularios/reactive-forms/reactive-forms.component';
-import { TemplateDrivenFormsComponent } from './formularios/template-driven-forms/template-driven-forms.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReactiveFormsComponent,
-    TemplateDrivenFormsComponent
+    AsideComponent,
+    ToolbarComponent,
+    FooterComponent,
+    CarruselComponent,
+    ListaComponent,
+    FormulariosComponent
+
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
   ],

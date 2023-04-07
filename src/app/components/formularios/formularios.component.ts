@@ -1,30 +1,6 @@
-import { Directive, Input, Component } from '@angular/core';
-import { AbstractControl, NG_VALIDATORS, ValidatorFn, Validators, FormBuilder, FormGroup, ValidationErrors, } from '@angular/forms';
+import { Component } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-
-
-
-@Directive({
-  selector: '[mustMatch]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: MustMatchDirective, multi: true }]
-})
-export class MustMatchDirective implements Validators {
-  @Input('mustMatch') mustMatch: string[] = [];
-
-  validate(control: AbstractControl): { [key: string]: any } | null {
-    const controlName = this.mustMatch[0];
-    const matchingControlName = this.mustMatch[1];
-
-    const controlValue = control.get(controlName)?.value;
-    const matchingControlValue = control.get(matchingControlName)?.value;
-
-    if (controlValue === matchingControlValue) {
-      return null;
-    } else {
-      return { mustMatch: true };
-    }
-  }
-}
 
 @Component({
   selector: 'app-formularios',
@@ -40,22 +16,21 @@ export class FormulariosComponent {
     private fb: FormBuilder,
   ) {
     this.formClient = this.fb.group({
-      Nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern(/^[A-Za-z\s\xF1\xD1]+$/)]],
-      Apellido: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern(/^[A-Za-z\s\xF1\xD1]+$/)]],
-      Email: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40), Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
-      Telefono: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10), Validators.pattern(/^([0-9])*$/)]],
-      Usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      Contraseña: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-      PasswordRepeat: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]]
+      nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern(/^[A-Za-z\s\xF1\xD1]+$/)]],
+      apellido: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern(/^[A-Za-z\s\xF1\xD1]+$/)]],
+      email: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40), Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
+      telefono: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(10), Validators.pattern(/^([0-9])*$/)]],
+      usuario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      passwordRepeat: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]]
     }, { validators: [this.checkPasswords] });
   };
-
 
   checkPasswords: ValidatorFn = (
     control: AbstractControl
   ): ValidationErrors | null => {
-    const password = control.get("Contraseña");
-    const password_repeat = control.get("PasswordRepeat");
+    const password = control.get("password");
+    const password_repeat = control.get("passwordRepeat");
     return password &&
       password_repeat &&
       password.value !== password_repeat.value
@@ -67,9 +42,8 @@ export class FormulariosComponent {
     Swal.fire({
       position: 'center',
       icon: 'success',
-      title: 'Genial!' + this.formClient.value.nombre + ' ' + this.formClient.value.apellido,
-      text: 'Tu usuario' + this.formClient.value.usuario + ' se creó exitosamente.',
-      footer: '<a>DESAFIO03 / ANGULAR / CODERHOUSE</a>',
+      title: 'Genial! ' + this.formClient.value.nombre + ' ' + this.formClient.value.apellido,
+      text: 'Tu usuario ' + this.formClient.value.usuario + ' fue creado cse creó exitosamente!',
       showConfirmButton: false,
       timer: 9000,
       timerProgressBar: true,
@@ -79,4 +53,3 @@ export class FormulariosComponent {
   }
 
 }
-
