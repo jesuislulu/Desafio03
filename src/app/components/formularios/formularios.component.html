@@ -95,7 +95,7 @@
             </div>
             <div class="col-md-6">
                 <label for="inputPassword" class="form-label">Clave</label>
-                <input type="password" class="form-control" id="inputPassword" formControlName="Ingresar clave."
+                <input type="password" class="form-control" id="inputPassword" formControlName="password"
                     placeholder="ingrese password" [ngClass]="{
                     'is-invalid':formClient.controls['password'].invalid && formClient.controls['password'].touched || formClient.errors?.['passwordCoincide'] == false, 
                     'is-valid':formClient.controls['password'].valid && !formClient.errors

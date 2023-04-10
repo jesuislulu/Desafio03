@@ -29,7 +29,7 @@ export class FormulariosComponent {
   checkPasswords: ValidatorFn = (
     control: AbstractControl
   ): ValidationErrors | null => {
-    const password = control.get("password");
+    const password = this.formClient?.value?.password
     const password_repeat = control.get("passwordRepeat");
     return password &&
       password_repeat &&

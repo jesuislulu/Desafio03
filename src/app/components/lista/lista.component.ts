@@ -10,12 +10,12 @@ import { Alumnos } from '../../models/alumnos.model';
 export class ListaComponent {
   
  
-//"Lucia", 'Roma', 'Marta', 'Maria', 'Antonio'
+//"Lucía", 'Roma', 'Marta', 'Maria', 'Antonio'
 
 public alumnos: Alumnos[] = [
-    new Alumnos (1, 37, 'Lucia', 'Rocha', 'Arquitectura' ),
+    new Alumnos (1, 37, 'Lucía', 'Rocha', 'Arquitectura' ),
     new Alumnos (2, 37, 'Roma', 'Martinelli', 'Arquitectura' ),
-    new Alumnos (3, 37, 'Maria', 'Callas', 'Arquitectura' ),
+    new Alumnos (3, 37, 'María', 'Callas', 'Arquitectura' ),
     new Alumnos (4, 37, 'Antonio', 'Banderas', 'Arquitectura' ),
   
   ];
